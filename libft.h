@@ -18,3 +18,4 @@ int	ft_isprint(int	c);
 int	ft_strlen(int	c);
 void	ft_memset(void	*s, int	c, unsigned int n);
 void	ft_bzero(void *s, unsigned int n);
+void	ft_memcpy(void *restrict dest, const *void src, unsigned int n);
