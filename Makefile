@@ -12,7 +12,7 @@ $(NAME): $(OBJ)
 	$(AR) $(AR_FLAGS) $(NAME) $(OBJ)
 
 %.o:	%.c 	#for each .o: depends in .c do this
-	$(CC) $(CFLAGS) -c -o $< $@	# $< refers the rule, $@ referes the dependency
+	$(CC) $(CFLAGS) -c $< # $< refers the rule, $@ referes the dependency
 
 clean:
 	rm -f $(OBJ)
