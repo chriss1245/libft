@@ -1,4 +1,4 @@
-void	ft_memset(void	*s, int	c, int n)
+void	ft_memset(void	*s, int	c, unsigned int n)
 {
 	while (n > 0)
 	{
