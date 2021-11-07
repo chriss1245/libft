@@ -4,5 +4,5 @@ int	ft_isalnum(int	c)
 {
 	if (ft_isdigit(c))
 		return (1);
-	return ft_isalpha(c);
+	return (ft_isalpha(c));
 }
