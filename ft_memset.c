@@ -1,9 +1,13 @@
-void	ft_memset(void	*s, int	c, unsigned int n)
+void	*ft_memset(void	*s, int	c, unsigned int n)
 {
+	unsigned char	*s_;
+	
+	s_ = (unsigned char *) s;
 	while (n > 0)
 	{
-		*s = c;
-		s++;
+		*s_ = c;
+		s_++;
 		n--;
 	}
+	return (s);
 }

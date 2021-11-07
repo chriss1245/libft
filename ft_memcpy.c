@@ -1,13 +1,19 @@
-void	*ft_memcpy(void *restrict dest, const void *restrict src, unsigned int n)
+void	*ft_memcpy(void *dest, const void *src, unsigned int n)
 {
-	void	*d;
+	unsigned char	*dest_;
+	unsigned char	*src_;
 
+	dest_ = dest;
+	src_ = (unsigned char*) src; 
+	
+	if (dest == 0 && src == 0)
+		return (dest);
 	while (n > 0)
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		*dest_ = *src_;
+		dest_++;
+		src_++;
 		n--;
 	}
-	return d;
+	return dest;
 }
