@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int strlen(const char *src);
+static int	str_len(const char *src);
 
 int	ft_strlcpy(char *dst, const char *src, unsigned int destsize)
 {
@@ -26,15 +26,15 @@ int	ft_strlcpy(char *dst, const char *src, unsigned int destsize)
 		}
 		dst[i] = 0;
 	}
-	return (strlen(src));
+	return (str_len(src));
 }
 
-static int	strlen(const char *src)
+static int	str_len(const char *src)
 {
 	int	i;
 
 	i = 0;
-	while(src[i] != 0)
+	while (src[i] != 0)
 		i++;
 	return (i);
 }

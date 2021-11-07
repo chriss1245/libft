@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static	unsigned int strlen(char *s);
+static	unsigned int	str_len(char *s);
 
 int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
 {
@@ -18,8 +18,8 @@ int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
 	unsigned int	dstsize_;
 	unsigned int	srcsize_;
 
-	dstsize_ = strlen(dst);
-	srcsize_ = strlen((char *)src);
+	dstsize_ = str_len(dst);
+	srcsize_ = str_len((char *)src);
 
 	if (dstsize == 0 || dstsize < dstsize_)
 		return ((int) (dstsize_ + srcsize_) - 1);
@@ -37,7 +37,7 @@ int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
 	return ((int) (dstsize_ + srcsize_) - 1);
 }
 
-static	unsigned int strlen(char *s)
+static	unsigned int str_len(char *s)
 {
 	unsigned int	i;
 
