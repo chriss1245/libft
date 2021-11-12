@@ -1,4 +1,4 @@
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, char c)
 {
 	char			*s_;
 	unsigned char	c_;
