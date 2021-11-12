@@ -1,9 +1,9 @@
-void	*memchr(const void *s, int c, unsigned int n)
+void	*ft_memchr(const void *s, int c, unsigned int n)
 {
 	unsigned char	*str;
 	unsigned char	d;
 
-	str = (unsigned char) s;
+	str = (unsigned char *) s;
 	d = (unsigned char) c;
 	
 	while (n > 0)

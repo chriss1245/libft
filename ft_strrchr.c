@@ -8,7 +8,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (len > 0)
 	{
 		if (*s == c)
-			return (s);
+			return ((char *) s);
 		s++;
 		len--;
 	}
@@ -22,5 +22,5 @@ static int	str_len(char *s)
 	i = 0;
 	while(s[i] != 0)
 		i++;
-	return (i)
+	return (i);
 }
