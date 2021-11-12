@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 10:32:05 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/12 10:36:37 by cmanzano         ###   ########.fr       */
+/*   Created: 2021/10/09 11:08:16 by cmanzano          #+#    #+#             */
+/*   Updated: 2021/10/11 09:16:13 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr (const char *big, const char *little, unsigned int len)
+static int	is_space(char c);
+
+int	ft_atoi(char *str)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	sign;
+	int	num;
+	int	i;
 
 	i = 0;
-	while (big[i] != 0 && i < len)
+	sign = 1;
+	num = 0;
+	while (is_space(str[i]))
+		i++;
+	if (str[i] == 45)
 	{
-		j = 0;
-		while (big[i + j] == little[j] && little[j] != 0)
-			j++;
-		if (little[j] == 0)
-			return (i + (char *)  big);
+		sign = -1;
 		i++;
 	}
+	while (str[i] >= 48 && str[i] <= 59 && str[i] != 0)
+	{
+		num = num * 10 + ((int) str[i] - 48);
+		i++;
+	}
+	return (num * sign);
+}
+
+static int	is_space(char c)
+{
+	if (c == 32 || c == '\n' || c == '\t')
+		return (1);
+	if (c == '\v' || c == '\f' || c == '\r')
+		return (1);
 	return (0);
 }
