@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:32:05 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/16 16:53:34 by chris            ###   ########.fr       */
+/*   Updated: 2021/11/16 21:27:27 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 			return (i + (char *) big);
 		i++;
 	}
+	if (big[0] == little[0] && big[0] == 0)
+		return ((char *) big);
 	return (0);
 }
