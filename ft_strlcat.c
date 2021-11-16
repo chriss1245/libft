@@ -3,47 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: chris <cmanzano@student.42Madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 18:39:12 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/16 13:38:15 by cmanzano         ###   ########.fr       */
+/*   Created: 2021/11/16 14:36:34 by chris             #+#    #+#             */
+/*   Updated: 2021/11/16 15:36:09 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-static int	str_len(char *s);
 
+#include "libft.h"
 
-
-int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
+unsigned int	ft_strlcat(char *dest, const char *src, unsigned int size)
 {
-	unsigned int	n_cat;
-	int	dstsize_;
-	int	srcsize_;
+	unsigned int	len;
+	unsigned int	n;
 
-	dstsize_ = str_len(dst);
-	srcsize_ = str_len((char *)src);
-
-	if (dstsize <= 0 || (int) dstsize < dstsize_)
-		return (dstsize + srcsize_);
-
-	dst = dst + dstsize_;
-	n_cat = dstsize - dstsize_ - 1;
-	while (n_cat  > 0 && *src != 0)
-	{
-		*dst = *src;
-		src++;
-		dst++;
-		n_cat--;
-	}
-	*dst = 0;
-	return (dstsize_ + srcsize_);
-}
-
-static	int str_len(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-		i++;
-	return (i); 
+	len = ft_strlen((char *) dest);
+	if (len >= size)
+		return (size + ft_strlen((char *) src));
+	n = size - len;
+	return (len + ft_strlcpy(dest + len, src, n));
 }

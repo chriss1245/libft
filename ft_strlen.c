@@ -6,13 +6,13 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:00:09 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/07 18:00:12 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/16 14:38:56 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *c)
+unsigned int	ft_strlen(char *c)
 {
-	int	len;
+	unsigned int	len;
 
 	len = 0;
 	while (*c != 0)
