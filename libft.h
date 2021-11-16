@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:52:49 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/16 14:40:43 by chris            ###   ########.fr       */
+/*   Updated: 2021/11/16 21:48:14 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char			*ft_strrchr(const char *s, char c);
 char			*ft_strrchr(const char *s, char c);
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 char			*ft_strnstr(const char *big, const char *little, unsigned int len);
-int				ft_atoi(char *str);
+int				ft_atoi(const char *nptr);
 void			*ft_calloc(unsigned int nmemb, unsigned int size);
 char			*ft_strdup(const char *s);
 #endif

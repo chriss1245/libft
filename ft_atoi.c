@@ -6,41 +6,34 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 11:08:16 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/10/11 09:16:13 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/16 21:58:14 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	is_space(char c);
+#include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *nptr)
 {
-	int	sign;
-	int	num;
-	int	i;
+	int		sign;
+	int		num;
+	char	*str;
 
-	i = 0;
+	str = (char *) nptr;
 	sign = 1;
 	num = 0;
-	while (is_space(str[i]))
-		i++;
-	if (str[i] == 45)
+	while (*str == 32 || (*str > 8 && *str < 14))
+		str++;
+	if (*str == 45)
 	{
 		sign = -1;
-		i++;
+		str++;
 	}
-	while (str[i] >= 48 && str[i] <= 59 && str[i] != 0)
+	else if (*str == 43)
+		str++;
+	while (ft_isdigit(*str))
 	{
-		num = num * 10 + ((int) str[i] - 48);
-		i++;
+		num = num * 10 + (*str - 48);
+		str++;
 	}
 	return (num * sign);
-}
-
-static int	is_space(char c)
-{
-	if (c == 32 || c == '\n' || c == '\t')
-		return (1);
-	if (c == '\v' || c == '\f' || c == '\r')
-		return (1);
-	return (0);
 }
