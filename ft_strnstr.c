@@ -6,11 +6,11 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:32:05 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/12 10:36:37 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/16 16:53:34 by chris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr (const char *big, const char *little, unsigned int len)
+char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -19,10 +19,10 @@ char	*ft_strnstr (const char *big, const char *little, unsigned int len)
 	while (big[i] != 0 && i < len)
 	{
 		j = 0;
-		while (big[i + j] == little[j] && little[j] != 0)
+		while (big[i + j] == little[j] && little[j] != 0 && i + j < len)
 			j++;
 		if (little[j] == 0)
-			return (i + (char *)  big);
+			return (i + (char *) big);
 		i++;
 	}
 	return (0);
