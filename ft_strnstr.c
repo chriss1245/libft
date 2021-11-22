@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 10:32:05 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/16 21:27:27 by chris            ###   ########.fr       */
+/*   Updated: 2021/11/22 10:29:33 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@ char	*ft_strnstr(const char *big, const char *little, unsigned int len)
 	unsigned int	i;
 	unsigned int	j;
 
+	if (*little == 0)
+		return ((char *) big);
 	i = 0;
 	while (big[i] != 0 && i < len)
 	{

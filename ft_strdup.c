@@ -6,7 +6,7 @@
 /*   By: chris <cmanzano@student.42Madrid.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 20:27:05 by chris             #+#    #+#             */
-/*   Updated: 2021/11/12 20:42:36 by chris            ###   ########.fr       */
+/*   Updated: 2021/11/22 10:31:11 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	*ft_strdup(const char *s)
 	while (s[size] != 0)
 		size++;
 	s_ = (char *) ft_calloc(size + 1, sizeof(char));
+	if (!s_)
+		return (s_);
 	i = 0;
 	while (i < size)
 	{
