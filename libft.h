@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:52:49 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/19 12:45:51 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/22 10:47:33 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ int				ft_atoi(const char *nptr);
 void			*ft_calloc(unsigned int nmemb, unsigned int size);
 char			*ft_strdup(const char *s);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
+char			*ft_strjoin(const char *s1, const char *s2);
 #endif
