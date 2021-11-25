@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:19:29 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/23 10:02:12 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/25 09:55:36 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static unsigned int	get_start(char *s1, char const *set);
 static unsigned int	get_end(char *s1, char const *set);
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned int	start;
 	unsigned int	end;
@@ -28,9 +28,9 @@ char		*ft_strtrim(char const *s1, char const *set)
 	if (!set)
 		return (ft_strdup(s1));
 	end = get_end((char *) s1, set);
-	start =	 get_start((char *) s1, set);
+	start = get_start((char *) s1, set);
 	if (end < start)
-		return ft_strdup("");
+		return (ft_strdup(""));
 	n = (char *) ft_calloc(end - start + 2, sizeof(char));
 	if (!n)
 		return (n);
@@ -64,7 +64,7 @@ static unsigned int	get_start(char *s1, char const *set)
 static unsigned int	get_end(char *s1, char const *set)
 {
 	unsigned int	end;
-	int	i;
+	int				i;
 	unsigned int	j;
 	int				finished;
 
