@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:52:49 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/22 11:48:53 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/25 13:22:52 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ char			*ft_strdup(const char *s);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 char			*ft_strjoin(const char *s1, const char *s2);
 char			*ft_strtrim(const char *s1, const char *set);
+char			**ft_split(const char *s, char c);
 #endif
