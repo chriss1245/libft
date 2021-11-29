@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:57:30 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/29 11:54:45 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:07:34 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,14 @@ static void			free_all(char **strings, unsigned int idx_word);
 
 char	**ft_split(char const *s, char c)
 {
-	char			*str1;
 	char			**strings;
 	unsigned int	words;
 	unsigned int	aux[3];
 
-	if (!s)
-		return (0);
-	str1 = (char *) s;
 	words = number_of_words(s, c);
 	strings = (char **) ft_calloc(words + 1, sizeof(char *));
-	if (!strings)
-		return (strings);
+	if (!strings || !s)
+		return (0);
 	aux[0] = 0;
 	aux[1] = 0;
 	while (aux[0] < words)
@@ -72,6 +68,8 @@ static unsigned int	number_of_words(const char *s, char c)
 	unsigned int	i;
 	int				is_last_separation;
 
+	if (!s)
+		return (0);
 	words = 0;
 	i = 0;
 	is_last_separation = 1;
