@@ -6,27 +6,64 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:57:30 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/25 13:32:17 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:54:45 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-
 static unsigned int	number_of_words(const char *s, char c);
+static int			allocate_substring(char **dest, const char *s, \
+										char const c);
+static void			free_all(char **strings, unsigned int idx_word);
 
 char	**ft_split(char const *s, char c)
 {
 	char			*str1;
 	char			**strings;
 	unsigned int	words;
+	unsigned int	aux[3];
 
+	if (!s)
+		return (0);
 	str1 = (char *) s;
 	words = number_of_words(s, c);
-	strings = 0;
-	printf("the phrase %s has %u words\n", s, words);
-
+	strings = (char **) ft_calloc(words + 1, sizeof(char *));
+	if (!strings)
+		return (strings);
+	aux[0] = 0;
+	aux[1] = 0;
+	while (aux[0] < words)
+	{
+		if (s[aux[1]] != c)
+		{
+			aux[2] = allocate_substring(strings + aux[0], s + aux[1], c);
+			if (!aux[2])
+				free_all(strings, aux[0] - 1);
+			else
+				aux[1] += aux[2];
+			aux[0]++;
+		}
+		else
+			aux[1]++;
+	}
 	return (strings);
+}
+
+static int	allocate_substring(char **dest, const char *s, char const c)
+{
+	unsigned int	i;
+	unsigned int	n;
+
+	n = 0;
+	while (s[n] != c && s[n] != 0)
+		n++;
+	*dest = (char *) ft_calloc(n + 1, sizeof(char));
+	if (!*dest)
+		return (0);
+	i = 0;
+	ft_strlcpy(*dest, s, n + 1);
+	return (n);
 }
 
 static unsigned int	number_of_words(const char *s, char c)
@@ -37,7 +74,7 @@ static unsigned int	number_of_words(const char *s, char c)
 
 	words = 0;
 	i = 0;
-	is_last_separation =1;
+	is_last_separation = 1;
 	while (s[i])
 	{
 		if (is_last_separation && s[i] != c)
@@ -52,4 +89,14 @@ static unsigned int	number_of_words(const char *s, char c)
 	return (words);
 }
 
+static void	free_all(char **strings, unsigned int idx_word)
+{
+	unsigned int	i;
 
+	i = 0;
+	while (i < idx_word)
+	{
+		free((void *) strings[i]);
+		i++;
+	}
+}
