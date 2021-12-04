@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:08:49 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/29 13:33:43 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/04 11:32:06 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_size(long int n);
 static void	fill_number(char *str, long int n);
-static char *itoa_zero();
+static char	*itoa_zero(void);
 
 char	*ft_itoa(int n)
 {
@@ -42,7 +42,7 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
-static char *itoa_zero()
+static char	*itoa_zero(void)
 {
 	char	*str;
 
