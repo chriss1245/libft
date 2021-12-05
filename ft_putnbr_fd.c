@@ -6,11 +6,12 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 13:13:32 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/04 13:31:35 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/05 11:04:59 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 static	void	putnbr_rec(long int n, int fd);
 

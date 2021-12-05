@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 17:55:32 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/04 19:04:49 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/05 11:14:41 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	void	*ptr;
+	t_list	*ptr;
 
 		if ((*lst) -> next == 0)
 		{
@@ -22,9 +22,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		}
 		else
 		{	
-			ptr = &((*lst) -> next);
+			ptr = ((*lst) -> next);
 			ft_lstdelone((*lst), del);
-			ft_lstclear(ptr, del);
+			ft_lstclear(&ptr, del);
 		}
 		*lst = 0;
 }

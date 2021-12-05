@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/04 18:06:57 by cmanzano         ###   ########.fr        #
+#    Updated: 2021/12/05 11:29:58 by cmanzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = 	ft_memchr.c ft_strchr.c ft_strrchr.c		\
 OBJ = $(SRC:.c=.o)
 SRCB = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c	\
 	   ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-	   ft_lstclear.c
+	   ft_lstclear.c ft_lstiter.c
 OBJB = $(SRCB:.c=.o)
 AR = ar
 AR_FLAGS = crs
