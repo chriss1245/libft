@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:57:30 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/05 14:28:42 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/06 17:26:56 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static unsigned int	number_of_words(const char *s, char c);
 static int			allocate_substring(char **dest, const char *s, \
 										char const c);
 static void			free_all(char **strings, unsigned int idx_word);
+static char			**init_table(const char *s, unsigned int words);
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,8 +25,8 @@ char	**ft_split(char const *s, char c)
 	unsigned int	aux[3];
 
 	words = number_of_words(s, c);
-	strings = (char **) ft_calloc(words + 1, sizeof(char *));
-	if (!strings || !s)
+	strings = init_table(s, words);
+	if (!strings)
 		return (0);
 	aux[0] = 0;
 	aux[1] = 0;
@@ -44,6 +45,18 @@ char	**ft_split(char const *s, char c)
 			aux[1]++;
 	}
 	return (strings);
+}
+
+static char	**init_table(const char *s, unsigned int words)
+{
+	char	**table;
+
+	if (!s)
+		return (0);
+	table = ft_calloc(words + 1, sizeof(char *));
+	if (!table)
+		return (0);
+	return ((char **) table);
 }
 
 static int	allocate_substring(char **dest, const char *s, char const c)
