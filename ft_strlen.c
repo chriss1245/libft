@@ -6,19 +6,18 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 18:00:09 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/11/16 14:38:56 by chris            ###   ########.fr       */
+/*   Updated: 2021/12/05 18:27:38 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *c)
+#include "libft.h"
+
+size_t	ft_strlen(const	char *c)
 {
-	unsigned int	len;
+	size_t	len;
 
 	len = 0;
-	while (*c != 0)
-	{
+	while (c[len])
 		len++;
-		c++;
-	}
 	return (len);
 }
