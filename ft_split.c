@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:57:30 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/06 17:26:56 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/08 11:05:01 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static unsigned int	number_of_words(const char *s, char c);
 static int			allocate_substring(char **dest, const char *s, \
 										char const c);
-static void			free_all(char **strings, unsigned int idx_word);
+static char			**free_all(char **strings, unsigned int idx_word);
 static char			**init_table(const char *s, unsigned int words);
 
 char	**ft_split(char const *s, char c)
@@ -36,7 +36,7 @@ char	**ft_split(char const *s, char c)
 		{
 			aux[2] = allocate_substring(strings + aux[0], s + aux[1], c);
 			if (!aux[2])
-				free_all(strings, aux[0] - 1);
+				return (free_all(strings, aux[0] - 1));
 			else
 				aux[1] += aux[2];
 			aux[0]++;
@@ -100,7 +100,7 @@ static unsigned int	number_of_words(const char *s, char c)
 	return (words);
 }
 
-static void	free_all(char **strings, unsigned int idx_word)
+static char	**free_all(char **strings, unsigned int idx_word)
 {
 	unsigned int	i;
 
@@ -110,4 +110,6 @@ static void	free_all(char **strings, unsigned int idx_word)
 		free((void *) strings[i]);
 		i++;
 	}
+	free(strings);
+	return (0);
 }
