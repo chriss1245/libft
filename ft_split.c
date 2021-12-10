@@ -6,7 +6,7 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:57:30 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/10 11:00:59 by cmanzano         ###   ########.fr       */
+/*   Updated: 2021/12/08 11:05:01 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static char	**init_table(const char *s, unsigned int words)
 
 static int	allocate_substring(char **dest, const char *s, char const c)
 {
+	unsigned int	i;
 	unsigned int	n;
 
 	n = 0;
@@ -69,6 +70,7 @@ static int	allocate_substring(char **dest, const char *s, char const c)
 	*dest = (char *) ft_calloc(n + 1, sizeof(char));
 	if (!*dest)
 		return (0);
+	i = 0;
 	ft_strlcpy(*dest, s, n + 1);
 	return (n);
 }
