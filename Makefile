@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/13 15:58:06 by chris            ###   ########.fr        #
+#    Updated: 2021/12/13 16:05:38 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,15 +66,16 @@ PRINTF = libftprintf.a
 PRINTF_DIR = printf
 PRINTF_H = ft_printf.h
 
-all: create_dirs $(NAME)
+all: $(OBJ_DIR) $(NAME)
 	$(GREEN) Done!
 
-create_dirs:
+$(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(NAME): $(PRINTF_DIR)/$(PRINTF) $(OBJS)
 	$(BLUE) Ensambling Library $(RESET)
 	$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
+
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c 
 	$(CYAN) Compiling $< $(RESET)
