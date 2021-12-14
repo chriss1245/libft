@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/14 09:32:00 by chris            ###   ########.fr        #
+#    Updated: 2021/12/14 09:35:06 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ all:  init_submodules $(OBJ_DIR) $(NAME)
 	@$(GREEN) Done! $(RESET)
 
 init_submodules:
-	if [ ! -f "$(PRINTF_DIR)/$(PRINTF)" ]; then \
+	@if [ ! -f "$(PRINTF_DIR)/$(PRINTF)" ]; then \
 		git submodule init; \
 		git submodule update; \
 		make -sC $(PRINTF_DIR); \
