@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/14 09:35:06 by chris            ###   ########.fr        #
+#    Updated: 2021/12/14 09:39:09 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,4 +100,4 @@ re: fclean all
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-.PHONY: all clean fclean re create_dirs $(OBJ_DIR)/%.o $(PRINTF_DIR)/$(PRINTF)
+.PHONY: all clean fclean re $(OBJ_DIR)/%.o init_submodules
