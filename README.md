@@ -19,7 +19,7 @@ gcc your_files.c libft/libft.a
 ``` 
 
 ## Fuctions
-### Equal to libc's functions
+#### Equal to libc's functions
 |Function|Description|
 |:--------:|:-----------:|
 |``ft_isalpha``|Checks if the character is alphabetic|
