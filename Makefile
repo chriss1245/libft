@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/13 16:05:38 by chris            ###   ########.fr        #
+#    Updated: 2021/12/14 09:23:47 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,14 +66,20 @@ PRINTF = libftprintf.a
 PRINTF_DIR = printf
 PRINTF_H = ft_printf.h
 
-all: $(OBJ_DIR) $(NAME)
-	$(GREEN) Done!
+all:  init_submodules $(OBJ_DIR) $(NAME)
+	@$(GREEN) Done! $(RESET)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+init_submodules:
+	@if [ ! -f "$(PRINTF_DIR)/$(PRINTF)" ]; then \
+		git submodule update; \
+		make -sC $(PRINTF_DIR); \
+		make clean -sC $(PRINTF_DIR); \
+		cp $(PRINTF_DIR)/$(INC)/$(PRINTF_H) $(INC)/$(PRINTF_H);\
+	fi 
 
-$(NAME): $(PRINTF_DIR)/$(PRINTF) $(OBJS)
+$(NAME): $(OBJS)
 	$(BLUE) Ensambling Library $(RESET)
+	cp $(PRINTF_DIR)/$(PRINTF) $(NAME)
 	$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
 
 
@@ -81,20 +87,16 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	$(CYAN) Compiling $< $(RESET)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(PRINTF_DIR)/$(PRINTF):
-	@make -sC $(PRINTF_DIR)
-	@cp $(PRINTF_DIR)/$(PRINTF) $(NAME)
-	@cp $(PRINTF_DIR)/$(INC_DIR)/$(PRINTF_H) $(INC_DIR)/$(PRINTF_H)
-
 clean:
-	$(PURPLE) Cleaned
+	$(PURPLE) Cleaned $(RESET)
 	@rm -rf $(OBJ_DIR)
-	@make clean -sC $(PRINTF_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f $(PRINTF_DIR)/$(PRINTF)
 
 re: fclean all
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 .PHONY: all clean fclean re create_dirs $(OBJ_DIR)/%.o $(PRINTF_DIR)/$(PRINTF)
