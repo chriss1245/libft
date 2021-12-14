@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/14 09:30:49 by chris            ###   ########.fr        #
+#    Updated: 2021/12/14 09:32:00 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ init_submodules:
 		git submodule update; \
 		make -sC $(PRINTF_DIR); \
 		make clean -sC $(PRINTF_DIR); \
-		cp $(PRINTF_DIR)/$(INC_DIR)/$(PRINTF_H) $(INC)/$(PRINTF_H);\
+		cp $(PRINTF_DIR)/$(INC_DIR)/$(PRINTF_H) $(INC_DIR)/$(PRINTF_H);\
 	fi 
 
 $(NAME): $(OBJS)
