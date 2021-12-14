@@ -27,5 +27,7 @@ gcc your_files.c libft/libft.a
 |``ft_isalnum``|Checks if the character is alphabetic or a digit|
 |``ft_isascii``|Checks if the character belongs to the ascii characters|
 |``ft_print``|Checks if the character is printable|
-|``ft_strlen``|Returns the lenght of a string
-|``ft_memset``|Fills the first ``n`` entries in a string s0  haracter ``c``|
+|``ft_strlen``|Returns the lenght of a string|
+|``ft_memset``|Fills the first ``n`` entries in a string ``s`` with the character ``c``|
+|``ft_bzero``|Removes the first ``n`` entries in a string ``s``|
+|``ft_memcpy``|Copies ``n`` bytes from ``src`` to ``dest``|
