@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/21 20:03:39 by cmanzano         ###   ########.fr        #
+#    Updated: 2021/12/21 20:09:32 by cmanzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ init_submodules:
 	@if [ ! -f "$(PRINTF_DIR)/Makefile" ]\
 		| [ ! -f "$(GNL_DIR)/Makefile" ]; then \
 		$(PURPLE) Cloning Submodules$(RESET);\
-		git clone --recurse-submodules;\
+		git submodule update --init --recursive;\
 	fi
 assamble_submodules: init_submodules $(ARCHIVE_DIR)
 	@if [ ! -f "$(ARCHIVE_DIR)/$(ARCHIVE)" ]; then \
