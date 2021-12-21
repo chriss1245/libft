@@ -6,13 +6,14 @@
 /*   By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 15:52:49 by cmanzano          #+#    #+#             */
-/*   Updated: 2021/12/13 15:48:55 by chris            ###   ########.fr       */
+/*   Updated: 2021/12/21 16:58:34 by cmanzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include "ft_printf.h"
+# include "../printf/inc/ft_printf.h"
+# include "../get_next_line/inc/get_next_line.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>

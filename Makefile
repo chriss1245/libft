@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/14 09:43:41 by chris            ###   ########.fr        #
+#    Updated: 2021/12/21 19:46:21 by cmanzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ ECHO = echo
 endif
 
 # COLOR
-GREEN = @$(ECHO) "\033[0;32m" #;4 underline
-BLUE = @$(ECHO) "\033[0;34m" 
-PURPLE = @$(ECHO) "\033[0;35m"
-CYAN = @$(ECHO) "\033[0;36m"
+GREEN = $(ECHO) "\033[0;32m" #;4 underline
+BLUE = $(ECHO) "\033[0;34m" 
+PURPLE = $(ECHO) "\033[0;35m"
+CYAN = $(ECHO) "\033[0;36m"
 RESET = "\033[1;0m"
 
 # ENSAMBLER
@@ -64,33 +64,54 @@ OBJS = $(addprefix $(OBJ_DIR)/, $(OBJ))
 # MODULES
 PRINTF = libftprintf.a
 PRINTF_DIR = printf
-PRINTF_H = ft_printf.h
+GNL = libgnl.a
+GNL_DIR = get_next_line
+ARCHIVE = archive.a
+ARCHIVE_DIR = archive
 
 all:  init_submodules $(OBJ_DIR) $(NAME)
 	@$(GREEN) Done! $(RESET)
 
-init_submodules:
-	@if [ ! -f "$(PRINTF_DIR)/$(PRINTF)" ]; then \
-		git submodule init; \
+init_submodules: $(ARCHIVE_DIR)
+	@if [ ! -f "$(ARCHIVE_DIR)/$(ARCHIVE)" ]; then \
 		git submodule update; \
-		make -sC $(PRINTF_DIR); \
-		make clean -sC $(PRINTF_DIR); \
-		cp $(PRINTF_DIR)/$(INC_DIR)/$(PRINTF_H) $(INC_DIR)/$(PRINTF_H);\
+		$(PURPLE)COMPILING $(PRINTF);\
+		make -C $(PRINTF_DIR); \
+		cp $(PRINTF_DIR)/$(PRINTF) $(ARCHIVE_DIR);\
+		make fclean -sC $(PRINTF_DIR); \
+		$(ECHO);\
+		$(PURPLE) COMPILING $(GNL) $(RESET);\
+		make -C $(GNL_DIR); \
+		cp $(GNL_DIR)/$(GNL) $(ARCHIVE_DIR);\
+		make fclean -sC $(GNL_DIR); \
+		cd $(ARCHIVE_DIR); \
+		$(AR) x $(PRINTF); \
+		$(AR) x $(GNL); \
+		rm *.a; \
+		$(AR) $(AR_FLAGS) $(ARCHIVE) *.o;\
+		rm *.o; \
+		rm __.*; \
+		cd ..; \
+		$(ECHO); \
+		$(PURPLE) COMPILING $(NAME) $(RESET); \
 	fi 
 
 $(NAME): $(OBJS)
-	$(BLUE) Ensambling Library $(RESET)
-	cp $(PRINTF_DIR)/$(PRINTF) $(NAME)
+	@$(ECHO)
+	@$(BLUE) Gattering precompiled submodules $(RESET)
+	cp $(ARCHIVE_DIR)/$(ARCHIVE) $(NAME)
+	@$(BLUE) Assembling Library $(RESET)
 	$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
 
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c 
-	$(CYAN) Compiling $< $(RESET)
+	@$(CYAN) Compiling $< $(RESET)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(PURPLE) Cleaned $(RESET)
+	@$(PURPLE) Cleaned $(RESET)
 	@rm -rf $(OBJ_DIR)
+	@rm -rf $(ARCHIVE_DIR)
 
 fclean: clean
 	@rm -f $(NAME)
@@ -99,5 +120,8 @@ re: fclean all
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+
+$(ARCHIVE_DIR):
+	@mkdir -p $(ARCHIVE_DIR)
 
 .PHONY: all clean fclean re init_submodules $(OBJ_DIR)/%.o 

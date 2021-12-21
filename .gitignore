@@ -3,3 +3,6 @@ libft-war-machine
 *.a
 libftTester
 *.out
+printf
+get_next_line
+archive
