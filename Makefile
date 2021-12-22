@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/21 20:09:32 by cmanzano         ###   ########.fr        #
+#    Updated: 2021/12/22 01:06:22 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,40 +82,45 @@ assamble_submodules: init_submodules $(ARCHIVE_DIR)
 	@if [ ! -f "$(ARCHIVE_DIR)/$(ARCHIVE)" ]; then \
 		$(ECHO); \
 		$(PURPLE)COMPILING $(PRINTF);\
-		make -C $(PRINTF_DIR); \
+		make -sC $(PRINTF_DIR); \
 		cp $(PRINTF_DIR)/$(PRINTF) $(ARCHIVE_DIR);\
 		make fclean -sC $(PRINTF_DIR); \
 		$(ECHO);\
-		$(PURPLE) COMPILING $(GNL) $(RESET);\
-		make -C $(GNL_DIR); \
+		$(PURPLE)COMPILING $(GNL) $(RESET);\
+		make -sC $(GNL_DIR); \
 		cp $(GNL_DIR)/$(GNL) $(ARCHIVE_DIR);\
 		make fclean -sC $(GNL_DIR); \
+		$(ECHO);\
+		$(PURPLE)CREATING SUBMODULES ARCHIVE $(RESET);\
 		cd $(ARCHIVE_DIR); \
 		$(AR) x $(PRINTF); \
 		$(AR) x $(GNL); \
 		rm *.a; \
+		$(BLUE)Assembling $(PRINTF) and $(GNL)\
+		into $(ARCHIVE_DIR)/$(ARCHIVE) $(RESET);\
 		$(AR) $(AR_FLAGS) $(ARCHIVE) *.o;\
 		rm *.o; \
-		rm __.*; \
+		rm __.* &> /dev/null; \
 		cd ..; \
+		$(GREEN)Done! $(RESET);\
 		$(ECHO); \
-		$(PURPLE) COMPILING $(NAME) $(RESET); \
+		$(PURPLE)COMPILING $(NAME) $(RESET); \
 	fi 
 
 $(NAME): $(OBJS)
 	@$(ECHO)
-	@$(BLUE) Gattering precompiled submodules $(RESET)
-	cp $(ARCHIVE_DIR)/$(ARCHIVE) $(NAME)
-	@$(BLUE) Assembling Library $(RESET)
-	$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
+	@$(PURPLE)ASSEMBLING LIBRARY $(RESET)
+	@cp $(ARCHIVE_DIR)/$(ARCHIVE) $(NAME)
+	@$(BLUE) Assembling $(ARCHIVE_DIR)/$(ARCHIVE) and objects into $(NAME) $(RESET)
+	@$(AR) $(AR_FLAGS) $(NAME) $(OBJS)
 
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c 
 	@$(CYAN) Compiling $< $(RESET)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@$(PURPLE) Cleaned $(RESET)
+	@$(PURPLE)CLEANED $(RESET)
 	@rm -rf $(OBJ_DIR)
 	@rm -rf $(ARCHIVE_DIR)
 
