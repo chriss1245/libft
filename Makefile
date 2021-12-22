@@ -6,7 +6,7 @@
 #    By: cmanzano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/11 13:32:23 by cmanzano          #+#    #+#              #
-#    Updated: 2021/12/22 01:06:22 by chris            ###   ########.fr        #
+#    Updated: 2021/12/22 01:09:00 by chris            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ all:  assamble_submodules $(OBJ_DIR) $(NAME)
 init_submodules:
 	@if [ ! -f "$(PRINTF_DIR)/Makefile" ]\
 		| [ ! -f "$(GNL_DIR)/Makefile" ]; then \
-		$(PURPLE) Cloning Submodules$(RESET);\
+		$(PURPLE)CLONING SUBMODULES$(RESET);\
 		git submodule update --init --recursive;\
 	fi
 assamble_submodules: init_submodules $(ARCHIVE_DIR)
